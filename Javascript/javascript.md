@@ -5,7 +5,7 @@ This document is about the core concept of Javascript
 ---
 ### Index
 1. [Scope](https://github.com/jun-Sogang/CSE-University/blob/master/Javascript/javascript.md#1-scope)
-2. [Closure](https://github.com/jun-Sogang/CSE-University/blob/master/Javascript/javascript.md#1-scope)
+2. [Closure](https://github.com/jun-Sogang/CSE-University/blob/master/Javascript/javascript.md#2-closure)
 
 ---
 
