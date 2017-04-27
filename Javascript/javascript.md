@@ -9,118 +9,202 @@ This document is about the core concept of Javascript
 
 ---
 
-#### 1. Scope <a id = "Scope"></a>
-* The scope of a program variable is the range of statement in which the variable is visible
+#### 1. Scope
+* The scope of a program variable is **the range of statement in which the variable is visible**
 * A variable is visible in a statement if it can be referenced in that statement
-* The scope rules of a language determine how references to names are associated with variables
+* The scope rules of a language determine **how references to names are associated with variables**
 
-***ex 1) javascript의 scope는 함수단위***
+##### _Example_
+
+* `javascript의 scope는 함수단위`
+* `변수 명의 중복`
+* `var keyword 생략`
+* `hoisting 1`
+* `hoisting 2`
+
+###### 1. Javascript has a function unit scope
+
+Since javascript has a **function unit scope**, the following example is satisfied.
 ```
-function scopeTest() {  
+var example = function scopeTest() {  
     var a = 0;
-    if (true) {
-        var b = 0;
-        for (var c = 0; c < 5; c++) {
-            console.log("c=" + c);
-         }
-         console.log("c=" + c);
+    for (var b = 0; b < 5; b += 1) {
+      console.log("b = " + b);
+      if (b === 4){
+        var c= true;
+        console.log("c =" + c);
+      }
     }
-    console.log("b=" + b);
+    console.log("b = " + b);
+    console.log("c = " + c);
 }
-scopeTest();  
+example();  
+```
+######result
+```b = 0
+b = 1
+b = 2
+b = 3
+b = 4
+c =true
+b = 5
+c = true
 ```
 
-***ex 2) 변수 명의 중복***
+###### 2.Duplicated variable names
+
+In JavaScript, if the variable name is duplicated, the other duplicated variable has a **different scope**.
+
 ```
-var scope = 10;  
-function scopeExam(){  
-    var scope = 20;
-    console.log("scope = " +scope);
+var a = 10;  
+var example = function scopeExam(){  
+    var a = 20;
+    console.log("a = " +a);
 }
-scopeExam();  
+example();  
 ```
 
-***ex 3) var keyword 생략***
+###### result
 ```
-function scopeExam(){  
-    scope = 20;
-    console.log("scope = " +scope);
-}
-
-function scopeExam2(){  
-    console.log("scope = " + scope);
-}
-scopeExam();  
-scopeExam2();  
+a = 20
 ```
 
-***ex 4) hoisting 1***
+###### 3. Var keyword omitted
+If the var keyword is omitted, it is assumed to be a **global variable**.
 ```
-function hoistingExam(){  
-    console.log("value="+value);
-    var value =10;
-    console.log("value="+value);
+var example1 = function scopeExam(){  
+    a = 10;
+    console.log("a = " + a);
 }
-hoistingExam();
-```
-***ex 5) hoisting 2***
-```
-var value=30;  
-function hoistingExam(){  
-    console.log("value="+value);
-    var value =10;
-    console.log("value="+value);
+
+var example2 = function scopeExam(){  
+    console.log("a = " + a);
 }
-hoistingExam();
+example1();  
+example2();  
 ```
 
+###### result
+```
+a = 10
+a = 10
+```
+
+###### 4. [Hoisting]($https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
+Hoisting means that **variable and function declarations are physically moved to the top of your coding**
+
+```
+var example = function hoistingExam(){  
+    console.log("a = " + a);
+    var a =10;
+    console.log("a =" + a);
+}
+example();
+```
+
+###### result
+```
+a = undefined
+a = 10
+```
+
+###### 5. Hoisting in duplicated variables names
+```
+var a = 20;  
+var example = function hoistingExam(){  
+    console.log("a = " + a);
+    var a = 10;
+    console.log("a = " + a);
+}
+example();
+```
+
+###### result
+```
+a = undefined
+a = 10
+```
 ---
-#### 2. Closure <a id = "Closure"></a>
+#### 2. Closure
 
-* Closures are functions that refer to independent (free) variables. In other words, these functions 'remember' the environment in which they were created.
+* Closures are functions that refer to independent (free) variables. In other words, these functions **remember the environment** in which they were created.
 * Lifetime : the period of time beginning when the procedure is entered and ending when execution of the procedure reaches the end
+* **Accessing a variable with a lifetime terminated is called a closure.**
 
-***ex 1)***
+##### _Example_
+
+* `Closure Example`
+* `Different Closure`
+
+###### Closure Example
 ```
-function outerFunc(){  
+var example = function scopeExam(){  
     var a= 0;
     return {
-        innerFunc1 : function(){
-            a+=1;
-            console.log("a :"+a);
+        plusOne : function() {
+            a += 1;
         },
-        innerFunc2 : function(){
-            a+=2;
-            console.log("a :"+a);
+        plusTwo : function() {
+            a += 2;
+        },
+        print : function() {
+          console.log("a : " + a);
         }
     };
 }
-var out = outerFunc();  
-out.innerFunc1();  
-out.innerFunc2();  
-out.innerFunc2();  
-out.innerFunc1();
+var plus = example();  
+plus.plusOne();  
+plus.print();
+plus.plusTwo();  
+plus.print();
+plus.plusOne();
+plus.print();  
+plus.plusTwo();
+plus.print();
 ```
 
-***ex 2)***
+###### result
+
 ```
-function outerFunc(){  
+a : 1
+a : 3
+a : 4
+a : 6
+```
+
+##### Different Closure
+
+```
+var example = function scopeExam(){  
     var a= 0;
     return {
-        innerFunc1 : function(){
-            a+=1;
-            console.log("a :"+a);
+        plusOne : function() {
+            a += 1;
         },
-        innerFunc2 : function(){
-            a+=2;
-            console.log("a :"+a);
+        plusTwo : function() {
+            a += 2;
+        },
+        print : function() {
+          console.log("a : " + a);
         }
     };
 }
-var out = outerFunc();  
-var out2 = outerFunc();  
-out.innerFunc1();  
-out.innerFunc2();  
-out2.innerFunc1();  
-out2.innerFunc2();
+var plusFirst = example();  
+var plusSecond = example();  
+plusFirst.plusOne();  
+plusFirst.print();
+plusFirst.plusTwo();  
+plusFirst.print();
+plusSecond.plusOne();
+plusSecond.print();  
+plusSecond.plusTwo();
+plusSecond.print();
+```
+
+###### result
+```
+a : 1
+a : 3
+a : 1
+a : 3
 ```
