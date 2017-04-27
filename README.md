@@ -1,2 +1,2 @@
-# CSE-Sogang-University
-Subjects in Sogang Computer Science Engeneering
+# CSEg-University
+Subjects in Computer Science Engeneering
