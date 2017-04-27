@@ -16,11 +16,11 @@ This document is about the core concept of Javascript
 
 ##### _Example_
 
-* `javascript의 scope는 함수단위`
-* `변수 명의 중복`
-* `var keyword 생략`
-* `hoisting 1`
-* `hoisting 2`
+* `Javascript has a function unit scope`
+* `Duplicated variable names`
+* `Var keyword omitted`
+* `Hoisting`
+* `Hoisting in duplicated variables names`
 
 ###### 1. Javascript has a function unit scope
 
@@ -40,6 +40,7 @@ var example = function scopeTest() {
 }
 example();  
 ```
+
 ######result
 
 ```b = 0
