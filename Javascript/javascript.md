@@ -41,7 +41,7 @@ var example = function scopeTest() {
 example();  
 ```
 
-######result
+###### result
 
 ```b = 0
 b = 1
