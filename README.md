@@ -1,2 +1,2 @@
-# CSEg-University
+# CSE-University
 Subjects in Computer Science Engeneering
