@@ -91,7 +91,7 @@ a = 10
 a = 10
 ```
 
-###### 4. [Hoisting MDN](#https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
+###### 4. [Hoisting MDN](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
 Hoisting means that **variable and function declarations are physically moved to the top of your coding**
 
 ```
