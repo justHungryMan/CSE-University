@@ -16,7 +16,9 @@
 > Subprograms are the fundamental building blocks of programs and are therefore among the most important concepts in programming language design.
 
 ---
-####9.1 Introduction <a id="Introduction"></a>
+
+####9.1 Introduction
+
 + **Two fundamental abstraction facilities**
   * Process abstraction : (subprogram)
     * <-> procedure call: an abstraction of a collection of statements
@@ -33,6 +35,7 @@
 >
 
 ***Procedure Example***
+
 ```
 function factorial (n) {
   ---
@@ -45,6 +48,7 @@ main() {
 > Macro : Copy해서 적는 것, 카피하니까 memory가 커진다. <a id="macro"></a>
 
 ***caller vs callee***
+
 ```
 main() {
   sub(1);     // caller
@@ -57,7 +61,8 @@ sub(1) {
 
 ---
 
-####9.1 Fundamentals of Subprograms <a id="FundamentalsOfSubprograms"></a>
+####9.1 Fundamentals of Subprograms
+
 1. **General Subprogram Characteristics**
 * **Basic characteristics of subprograms**
   * Each subprogram has a [single entry point](#singleEntryPoint)
