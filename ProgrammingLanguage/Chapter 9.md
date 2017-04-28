@@ -1,7 +1,7 @@
 # Chaper 9
 #### Subprograms
-1. [Introduction](#Introduction)
-2. [FundamentalsOfSubprograms](#FundamentalsOfSubprograms)
+1. [Introduction](https://github.com/jun-Sogang/CSE-University/blob/master/ProgrammingLanguage/Chapter%209.md)
+2. [FundamentalsOfSubprograms](https://github.com/jun-Sogang/CSE-University/blob/master/ProgrammingLanguage/Chapter%209.md)
 3. Design Issues for Subprograms
 4. Local Referencing Environments
 5. Parameter Passing Methods
@@ -61,7 +61,7 @@ sub(1) {
 
 ---
 
-#### 9.1 Fundamentals of Subprograms
+#### 9.2 Fundamentals of Subprograms
 
 1. **General Subprogram Characteristics**
 * **Basic characteristics of subprograms**
