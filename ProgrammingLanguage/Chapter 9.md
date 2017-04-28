@@ -17,7 +17,7 @@
 
 ---
 
-####9.1 Introduction
+#### 9.1 Introduction
 
 + **Two fundamental abstraction facilities**
   * Process abstraction : (subprogram)
@@ -61,7 +61,7 @@ sub(1) {
 
 ---
 
-####9.1 Fundamentals of Subprograms
+#### 9.1 Fundamentals of Subprograms
 
 1. **General Subprogram Characteristics**
 * **Basic characteristics of subprograms**
