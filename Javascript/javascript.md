@@ -4,13 +4,13 @@ This document is about the core concept of Javascript
 
 ---
 ## Index
-1. [Scope](#1-Scope)
-2. [Closure](#2-Closure)
-3. [This](#3-This)
+1. [Scope](#Scope)
+2. [Closure](#Closure)
+3. [This](#This)
 
 ---
 
-## 1. Scope
+## 1. Scope <a id="Scope"></a>
 * The scope of a program variable is **the range of statement in which the variable is visible**
 * A variable is visible in a statement if it can be referenced in that statement
 * The scope rules of a language determine **how references to names are associated with variables**
@@ -129,7 +129,7 @@ a = undefined
 a = 10
 ```
 ---
-## 2. Closure
+## 2. Closure <a id="Closure"></a>
 
 * Closures are functions that refer to independent (free) variables. In other words, these functions **remember the environment** in which they were created.
 * Lifetime : the period of time beginning when the procedure is entered and ending when execution of the procedure reaches the end
@@ -214,7 +214,7 @@ a : 3
 ```
 
 
-## 3. This
+## 3. This  <a id="This"></a>
 My friend [jiseung](https://github.com/rohjs) has already created the material on this and this material is amazingly good. So I decided to use my friend's material.
 
 [reference](https://github.com/rohjs/TIL/blob/master/JavaScript/javascript.md)
