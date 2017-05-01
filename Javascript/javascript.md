@@ -216,9 +216,7 @@ a : 3
 
 <a id="This"></a>
 ## 3. This  
-My friend [jiseung](https://github.com/rohjs) has already created the material on this and this material is amazingly good. So I decided to use my friend's material.
-
-[reference](https://github.com/rohjs/TIL/blob/master/JavaScript/javascript.md)
+**My friend [jiseung](https://github.com/rohjs) has already created the material on this and this material is amazingly good. So I decided to use my friend's material.**  [reference](https://github.com/rohjs/TIL/blob/master/JavaScript/javascript.md)
 
 `this` is a property that is created automatically when a function is executed. The keyword `this` refers to **the object that invokes the very function, _not the object that defines the function_**.  
 But what makes us _really_ confused is to figure out when exactly _invocation_ happens when we execute functions or methods. [This article](https://rainsoft.io/gentle-explanation-of-this-in-javascript/#2functioninvocation) well explains when the function/method invocation really happens and helped me organize the key principle of `this`.
