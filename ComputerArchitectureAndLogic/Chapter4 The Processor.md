@@ -75,4 +75,5 @@ Add provision for a decoded and then executed instruction to be kept in the buff
   |  S1  | Instruction Fetch |  Instruction Unit |         +         | + | + | + |                  |   |   |   |   |   |   | ... |
   |  S2  |                   | Instruction Fetch |  Instruction Unit | * | * | * |         *        | * | * | * | * | * | * | ... |
   |  S3  |                   |                   | Instruction Fetch |   |   |   | Instruction Unit | + | + | + | + |   |   | ... |
+  
   `Waiting "+" operator`
