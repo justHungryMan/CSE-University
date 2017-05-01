@@ -2,10 +2,10 @@
 #### The processor
 we learn about ***pipeline concepts***
 
-1. [Three basic requirement for a processor]()
-2. [Instruction execution cycle]()
-3. [Grant chart]()
-4. [Look behind & Look ahead facility]()
+1. [Three basic requirement for a processor](https://github.com/jun-Sogang/CSE-University/blob/master/ComputerArchitectureAndLogic/Chapter4%20The%20Processor.md#41-three-basic-requirement-for-a-processor)
+2. [Instruction execution cycle](https://github.com/jun-Sogang/CSE-University/blob/master/ComputerArchitectureAndLogic/Chapter4%20The%20Processor.md#42-instruction-execution-cycle)
+3. [Grant chart](https://github.com/jun-Sogang/CSE-University/blob/master/ComputerArchitectureAndLogic/Chapter4%20The%20Processor.md#43-gantt-chart)
+4. [Look behind & Look ahead facility](https://github.com/jun-Sogang/CSE-University/blob/master/ComputerArchitectureAndLogic/Chapter4%20The%20Processor.md#44-look-behind--look-ahead-facility)
 
 ---
 
@@ -33,6 +33,7 @@ we learn about ***pipeline concepts***
 #### 4.3 Gantt chart
 
 `Pararell 1`
+
 |   Time  |  1 | 2  | 3  | 4  | 5  | 6  | 7  | 8  | ... |
 |:-------:|:--:|----|----|----|----|----|----|----|-----|
 | I-fetch | i1 |    | i2 |    | i3 |    | i4 |    | ... |
@@ -40,6 +41,7 @@ we learn about ***pipeline concepts***
 | D-unit  |    |    | i1 |    | i2 |    | i3 |    | ... |
 
 `Pararell 2`
+
 |   Time  |  1 | 2  | 3  | 4  | 5  | 6  | 7  | 8  | ... |
 |:-------:|:--:|----|----|----|----|----|----|----|-----|
 | I-fetch | i1 | i2 | i3 | i4 | i5 | i6 | i7 | i8 | ... |
