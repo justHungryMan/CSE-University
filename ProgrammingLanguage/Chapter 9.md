@@ -1,11 +1,11 @@
 # Chaper 9
 #### Subprograms
-1. [Introduction](https://github.com/jun-Sogang/CSE-University/blob/master/ProgrammingLanguage/Chapter%209.md)
-2. [FundamentalsOfSubprograms](https://github.com/jun-Sogang/CSE-University/blob/master/ProgrammingLanguage/Chapter%209.md)
-3. [Design Issues for Subprograms]()
-4. [Local Referencing Environments]()
-5. [Parameter Passing Methods]()
-6. [Parameters That are Subprogram Names]()
+1. [Introduction](https://github.com/jun-Sogang/CSE-University/blob/master/ProgrammingLanguage/Chapter%209.md#91-introduction)
+2. [FundamentalsOfSubprograms](https://github.com/jun-Sogang/CSE-University/blob/master/ProgrammingLanguage/Chapter%209.md#92-fundamentals-of-subprograms)
+3. [Design Issues for Subprograms](https://github.com/jun-Sogang/CSE-University/blob/master/ProgrammingLanguage/Chapter%209.md#93-design-issues-for-subprograms)
+4. [Local Referencing Environments](https://github.com/jun-Sogang/CSE-University/blob/master/ProgrammingLanguage/Chapter%209.md#94-local-referencing-environments)
+5. [Parameter Passing Methods](https://github.com/jun-Sogang/CSE-University/blob/master/ProgrammingLanguage/Chapter%209.md#95-parameter-passing-methods)
+6. [Parameters That are Subprogram Names](https://github.com/jun-Sogang/CSE-University/blob/master/ProgrammingLanguage/Chapter%209.md#96-parameters-that-are-subprogram-names)
 7. Overloaded Subprograms
 8. Generic Subprograms
 9. Design Issues for Functions
