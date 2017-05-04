@@ -15,6 +15,9 @@
   * Subprogram
 * Computer Architecture and Logic
   * The Processor
+* Python
+  * Python
+  * webCrawling
 
 
 ---
