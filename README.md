@@ -1,6 +1,7 @@
 # CSE-University
 * 컴퓨터공학에서 배우는 과목과 [Jun](https://github.com/jun-Sogang)이 개발을 하면서 알게되는 자료를 정리하는 목적으로 쓰인다.  
 * 비전공자들도 컴퓨터공학 지식을 얻게함을 목적으로 [CSE-University](#CSE-University) 이라는 프로젝트를 진행한다.
+* 문서 영문화를 지향하고 있다. 번역관련 commit을 해주시면 감사합니다!!
 
 
 
