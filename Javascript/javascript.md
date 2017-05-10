@@ -7,6 +7,7 @@ This document is about the core concept of Javascript
 1. [Scope](#Scope)
 2. [Closure](#Closure)
 3. [This](#This)
+4. [Call, Bind, Apply](#CallBindApply)
 
 ---
 <a id="Scope"></a>
@@ -391,4 +392,102 @@ console.log(age); // 23
 var boyoon = new Person('boyoon', 23);
 console.log(boyoon.name); // 'boyoon'
 console.log(boyoon.age); // 23
+```
+
+
+<a id="CallBindApply"></a>
+## 4. Call Bind Apply  
+_Call, Bind, Apply_ 는 어떤 함수가 호출될때의 this를 결정하게 한다.  
+예시를 통해 살펴보자.
+
+##### Call
+```javascript
+function sum(first, second) {
+  console.log(this.num);
+  return first + second;
+}
+
+function foo1(first, second) {
+  return sum(first, second)
+}
+
+function foo2(first, second) {
+  return sum.call(obj, first, second)
+}
+
+var num = '0';
+var obj = {
+  num : 2,
+};
+
+foo1(5, 5); // 0
+foo2(5, 5); // 2
+```
+`.call(this, parameter1, parameter2, ...)`의 구조로 실행되면 이때 호출되는 함수의 `this`는 `.call`에서의 `this`로 대체된다.
+
+#### Apply  
+```javascript
+function sum(first, second) {
+  console.log(this.num);
+  return first + second;
+}
+
+function foo1(first, second) {
+  return sum(first, second)
+}
+
+function foo2(first, second) {
+  return sum.apply(obj, [first, second]);
+  // sum.apply(obj, arguements)도 가능하다.
+}
+
+var num = '0';
+var obj = {
+  num : 2,
+};
+
+foo1(5, 5); // 0
+foo2(5, 5); // 2
+```
+`.apply(this, array)`는 배열 형식으로 `parameter`를 넘겨주는 특징이 있다.  
+`.call`과 결과는 동일하므로 매개변수를 넘기기 편한 방법을 쓰면 된다.
+
+#### Bind  
+
+```javascript
+var num = 1;
+var obj = {
+  num : 2,
+}
+
+function square() {
+  return console.log(this.num * this.num);
+}
+
+square();
+var squareFunc = square.bind(obj);
+squareFunc();
+```
+`bind`는 `this`를 재정의하여 새로운 함수를 return 해준다.
+
+
+##### 흔히들 실수하는 부분
+```javascript
+var spam = {
+  status : "love",
+  msg : function() {
+    return "I " + this.status + "spam";
+  },
+}
+
+spam.msg();     // I love spam
+
+var foo = spam.msg;
+foo();          // I undefined spam
+```
+이 경우 `spam.msg()`는 **method invocation** 에 의해 `this`가 `spam`으로 정의되서 `I love spam`이 나오게 된다.  
+그런데 `foo = spam.msg`를 하는 부분에서 `this`는 여전히 `window`를 가리키게 된다. 따라서 `foo`를 실행할때도 이 `foo`는 `this`를 `window`로 가지고 있고 이에따라 `I undefined spam`이 나오게 된다.  
+원하는 결과를 얻고 싶으면 다음과 같이 `this` 를 정해주면 된다.
+```javascript
+var foo = spam.msg.bind(spam);
 ```
