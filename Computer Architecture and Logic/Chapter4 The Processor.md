@@ -2,13 +2,13 @@
 #### The processor
 we learn about ***pipeline concepts***
 
-1. [Three basic requirement for a processor](https://github.com/jun-Sogang/CSE-University/blob/master/ComputerArchitectureAndLogic/Chapter4%20The%20Processor.md#41-three-basic-requirement-for-a-processor)
-2. [Instruction execution cycle](https://github.com/jun-Sogang/CSE-University/blob/master/ComputerArchitectureAndLogic/Chapter4%20The%20Processor.md#42-instruction-execution-cycle)
-3. [Grant chart](https://github.com/jun-Sogang/CSE-University/blob/master/ComputerArchitectureAndLogic/Chapter4%20The%20Processor.md#43-gantt-chart)
-4. [Look behind & Look ahead facility](https://github.com/jun-Sogang/CSE-University/blob/master/ComputerArchitectureAndLogic/Chapter4%20The%20Processor.md#44-look-behind--look-ahead-facility)
+1. [Three basic requirement for a processor](#Chapter1)
+2. [Instruction execution cycle](#Chapter2)
+3. [Grant chart](#Chapter3)
+4. [Look behind & Look ahead facility](#Chapter4)
 
 ---
-
+<a id = "Chapter1"></a>  
 #### 4.1 Three basic requirement for a processor
 * Three main blocks
   1. Instruction Unit : ***Instruction fetch***, ***Instruction Decode***
@@ -17,6 +17,9 @@ we learn about ***pipeline concepts***
       * ALU
   3. Storage
 
+
+
+<a id = "Chapter2"></a>  
 #### 4.2 Instruction execution cycle
 1. `Instruction fetch`
 2. `Decode`
@@ -30,6 +33,8 @@ we learn about ***pipeline concepts***
 * I-unit : 2 + 3 + 4
 * D-unit : 5
 
+
+<a id = "Chapter3"></a>  
 #### 4.3 Gantt chart
 
 `Pararell 1`
@@ -53,7 +58,7 @@ we learn about ***pipeline concepts***
   2. `Procedure call`
   3. `Conditional statement`
 
-
+<a id = "Chapter4"></a>  
 #### 4.4 Look behind & Look ahead facility
 
 Add provision for a decoded and then executed instruction to be kept in the buffer until ARM instructions following it in sequential stream
@@ -66,14 +71,47 @@ Add provision for a decoded and then executed instruction to be kept in the buff
 * Assume three stage pipeline
   * I-fetch, I-input, Execution
 * Unavailibility of a functional unit
-  * S1 : R1 <- R2 + R3    (+) 4 unit
-  * S2 : R4 <- R2  *  R5    ( \* ) 10 unit
+  * S1 : R1 <- R2 + R3     
+  * S2 : R4 <- R2  *  R5    
   * S3 : R6 <- R3 + R6
+>(+) : 4 units  
+> ( \* ) : 10 units
 
   | unit |         1         |         2         |         3         | 4 | 5 | 6 |         7        | 8 |   |   |   |   |   | ... |
   |:----:|:-----------------:|:-----------------:|:-----------------:|:-:|:-:|:-:|:----------------:|:-:|:-:|:-:|:-:|:-:|:-:|:---:|
   |  S1  | Instruction Fetch |  Instruction Unit |         +         | + | + | + |                  |   |   |   |   |   |   | ... |
   |  S2  |                   | Instruction Fetch |  Instruction Unit | * | * | * |         *        | * | * | * | * | * | * | ... |
   |  S3  |                   |                   | Instruction Fetch |   |   |   | Instruction Unit | + | + | + | + |   |   | ... |
-  
+
   `Waiting "+" operator`
+
+
+#### 4.5 Requirements for Parallel execution of two instructions  
+> S(i), S(j) : two instructions  
+> I(i), I(j) : domain (inputs)  
+> O(i), O(j) : range (outputs)  
+
+* O(i) ∩ O(j) = Ø  
+* O(i) ∩ I(j) = Ø  
+* O(j) ∩ I(i) = Ø  
+>두 개 이상의 Outputs이 동일하지 않고 Output과 Input이 다를때 Parallel execution이 가능하다.  
+
+###### Example
+```javascript
+S1 : R1 <- R2 + R3
+S2 : R4 <- R2 * R5
+S3 : R6 <- R3 + R6
+```
+> O(1) = {R1}, I(1) = {R2, R3}  // instruction 조건은 맞지 않은데..?  
+> O(2) = {R4}, I(2) = {R2, R5}  
+> O(3) = {R6}, I(3) = {R3, R6}  
+
+Independent (Processed same time)  
+**But one by one** 으로 Dynamic Scheduling inside PC(processor)
+> Processor가 Optimal하게 instruction execution 순서를 정한다.  
+
+##### Example 안되는 경우
+```javascript
+S1 : R1 <- R2 + R3
+S2 : R2 <- R4 * R5
+```
