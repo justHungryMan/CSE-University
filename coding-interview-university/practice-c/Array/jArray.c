@@ -25,6 +25,7 @@ bool junArrayIsEmpty(JunArray *arr) {
 }
 
 int junArrayAt(JunArray *arr, int index) {
+  assert(arr->size > index && index >= 0);
   return *(arr->data + index);
 }
 
@@ -65,7 +66,7 @@ void junArrayDelete(JunArray *arr, int index) {
 }
 
 void junArrayRemove(JunArray *arr, int element) {
-  int *removedArr = (int *)malloc(sizeof(int) * arr->size);
+  int *removedArr = (int *)malloc(sizeof(int) * arr->capacity);
   int index = 0;
   for (int i = 0; i < arr->size; ++i) {
     if (*(arr->data + i) != element) removedArr[index++] = junArrayAt(arr, i);    // copy data except element
