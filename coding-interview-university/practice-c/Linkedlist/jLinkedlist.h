@@ -3,6 +3,8 @@
 #include <assert.h>
 #include <stdbool.h>
 
+// URL : https://github.com/jun-Sogang/CSE-University/tree/master/coding-interview-university#data-structures
+
 typedef struct node {
   int item;
   struct node *next;

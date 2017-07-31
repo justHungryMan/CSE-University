@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #define VEC_INIT_CAPACITY 4
 
+// URL : https://github.com/jun-Sogang/CSE-University/tree/master/coding-interview-university#data-structures
+
 typedef struct JunImplementationArray {
   int size;
   int capacity;
