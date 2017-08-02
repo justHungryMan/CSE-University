@@ -567,7 +567,7 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
         (for when you pass a pointer to a function that may change the address where that pointer points)
         This page is just to get a grasp on ptr to ptr. I don't recommend this list traversal style. Readability and maintainability suffer due to cleverness.
         - [Pointers to Pointers](https://www.eskimo.com/~scs/cclass/int/sx8.html) **Hard to understand**
-    - [ ] implement (I did with tail pointer & without):
+    - [x] implement (I did with tail pointer & without):
         - [x] size() - returns number of data elements in list
         - [x] empty() - bool returns true if empty
         - [x] value_at(index) - returns the value of the nth item (starting at 0 for first)
@@ -600,12 +600,12 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
         - enqueue(value) - adds value at position at tail
         - dequeue() - returns value and removes least recently added element (front)
         - empty()
-    - [ ] Implement using fixed-sized array:
+    - [x] Implement using fixed-sized array:
         - enqueue(value) - adds item at end of available storage
         - dequeue() - returns value and removes least recently added element
         - empty()
         - full()
-    - [ ] Cost:
+    - [x] Cost:
         - a bad implementation using linked list where you enqueue at head and dequeue at tail would be O(n)
             because you'd need the next to last element, causing a full traversal each dequeue
         - enqueue: O(1) (amortized, linked list and array [probing])
