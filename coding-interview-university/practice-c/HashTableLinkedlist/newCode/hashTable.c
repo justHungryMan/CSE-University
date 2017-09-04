@@ -43,7 +43,7 @@ void jHashTableDoubling(jHashTable **hashTable) {
         }
     }
     jHashTableDestroyData(hashTable);
-    hashTable = &newHashTable;
+    *hashTable = newHashTable;
   }
 }
 // Frees memory associated with given hash table.

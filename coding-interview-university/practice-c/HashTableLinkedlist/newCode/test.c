@@ -10,7 +10,7 @@ void testAll() {
 void testAdd(jHashTable **hashTable) {
   printf("Test Add....");
   printf("%d\n", (*hashTable)->capacity);
-  // jHashTableAdd("Hyejin", "Girfriend", hashTable);
+  jHashTableAdd("Hyejin", "Girfriend", hashTable);
   // jHashTableAdd("love", "Hyejin", hashTable);
   assert(jHashTableExists("Hyejin", hashTable) == true);
   assert(jHashTableExists("Sungjun", hashTable) == false);
