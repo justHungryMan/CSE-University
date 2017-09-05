@@ -2,21 +2,25 @@
 
 // Creates a new hash table with size slots.
 jHashTable **jHashTableNew(int capacity) {
-  jHashTable *hashTable = (jHashTable *)malloc(sizeof(jHashTable));
   jHashTable **hashTablePointer = (jHashTable **)malloc(sizeof(jHashTable *));
-  *hashTablePointer = hashTable;
+  *hashTablePointer = jHashTableCreate(capacity);
+  return hashTablePointer;
+}
+
+jHashTable *jHashTableCreate(int capacity) {
+  jHashTable *hashTable = (jHashTable *)malloc(sizeof(jHashTable));
   hashTable->size = 0;
   hashTable->capacity = capacity;
   hashTable->data = (chaining **)malloc(sizeof(chaining*) * capacity);
   for (int i = 0; i < capacity; ++i) {
     hashTable->data[i] = NULL;
   }
-  return hashTablePointer;
+  return hashTable;
 }
 // Table doubling when changed size.
 void jHashTableDoubling(jHashTable **hashTable) {
   bool isDoubleing = false;
-  int doublingSize;
+  int doublingSize = TABLE_INIT_SIZE;
   if ((*hashTable)->size == (*hashTable)->capacity) {
       isDoubleing = true;
       doublingSize = (*hashTable)->capacity * 2;
@@ -26,7 +30,7 @@ void jHashTableDoubling(jHashTable **hashTable) {
       doublingSize = (*hashTable)->capacity / 4;
   }
   if (isDoubleing) {
-    jHashTable *newHashTable = *jHashTableNew(doublingSize);
+    jHashTable *newHashTable = jHashTableCreate(doublingSize);
     for (int i = 0; i < (*hashTable)->capacity; ++i) {
         for (chaining *traversal = (*hashTable)->data[i]; traversal != NULL; traversal = traversal->next) {
             int hashedKey = hash(traversal->key, newHashTable->capacity);
@@ -37,7 +41,7 @@ void jHashTableDoubling(jHashTable **hashTable) {
             else {
               chaining *newChain = jHashTableAddChain(traversal->key, traversal->value);
               newChain->next = newHashTable->data[hashedKey]->next;
-              newHashTable->data[hashedKey] = newChain;
+              newHashTable->data[hashedKey]->next= newChain;
               newHashTable->size += 1;
             }
         }
@@ -55,11 +59,15 @@ void jHashTableDestroy(jHashTable **hashTable) {
 void jHashTableDestroyData(jHashTable **hashTable) {
   for (int i = 0; i < (*hashTable)->capacity; ++i) {
     chaining* traversal = (*hashTable)->data[i];
-    for (chaining* destoriedChain = traversal; traversal != NULL; traversal = traversal->next) {
-      destoriedChain = traversal;
+    while (traversal != NULL) {
+      chaining* destoriedChain = traversal;
+      traversal = traversal->next;
+      free(destoriedChain->key);
+      free(destoriedChain->value);
       free(destoriedChain);
     }
   }
+  free((*hashTable)->data);
   free(*hashTable);
 }
 // Universal string hashing algorithm
@@ -72,8 +80,8 @@ int hash(const char* key, const int m) {
 }
 // Add the given key and value to chaing
 chaining *jHashTableAddChain(const char* key, const char* value) {
-    int valueLen = strlen(value);
-    int keyLen = strlen(key);
+    int valueLen = (int)strlen(value);
+    int keyLen = (int)strlen(key);
     chaining *newChain = (chaining *)malloc(sizeof(chaining));
     newChain->value = (char *)malloc(sizeof(char) * (valueLen + 1));
     newChain->key = (char *)malloc(sizeof(char) * (keyLen + 1));
@@ -84,7 +92,6 @@ chaining *jHashTableAddChain(const char* key, const char* value) {
 }
 // Add the given key and object to hash table. If key exists, make chain.
 void jHashTableAdd(char *key, char *value, jHashTable **hashTable) {
-  printf("why?%d\n", (*hashTable)->capacity);
     int hashedKey = hash(key, (*hashTable)->capacity);
     bool isKeyExist = false;
     chaining *findLastChain = (*hashTable)->data[hashedKey];
@@ -119,7 +126,6 @@ bool jHashTableExists(const char *key, jHashTable **hashTable) {
 }
 // Return value by key, if not return NULL.
 char *jHashTableGet(const char *key, jHashTable **hashTable) {
-    assert(jHashTableExists(key, hashTable) == true);
     int hashedKey = hash(key, (*hashTable)->capacity);
     for (chaining *traversal = (*hashTable)->data[hashedKey]; traversal != NULL; traversal = traversal->next) {
         if (!strcmp(traversal->key, key)) return traversal->value;
@@ -128,17 +134,17 @@ char *jHashTableGet(const char *key, jHashTable **hashTable) {
 }
 // Remove data by key.
 void jHashTableRemove(const char *key, jHashTable **hashTable) {
-    assert(jHashTableExists(key, hashTable) == true);
     int hashedKey = hash(key, (*hashTable)->capacity);
     if (!strcmp((*hashTable)->data[hashedKey]->key, key)) {
-        free((*hashTable)->data[hashedKey]->key);
-        free((*hashTable)->data[hashedKey]->value);
-        free((*hashTable)->data[hashedKey]);
-        (*hashTable)->data[hashedKey] = NULL;
+      chaining *destoriedChain = (*hashTable)->data[hashedKey];
+      free(destoriedChain->key);
+      free(destoriedChain->value);
+      (*hashTable)->data[hashedKey] = destoriedChain->next;
+      free(destoriedChain);
     }
     else {
         chaining *traversal, *prev;
-        for (prev = (*hashTable)->data[hashedKey], traversal = (*hashTable)->data[hashedKey]->next; strcmp(traversal->key, key); prev = traversal, traversal = traversal->next);
+        for (prev = (*hashTable)->data[hashedKey], traversal = (*hashTable)->data[hashedKey]->next; strcmp(traversal->key, key); prev = prev->next, traversal = traversal->next);
         free(traversal->key);
         free(traversal->value);
         prev->next = traversal->next;

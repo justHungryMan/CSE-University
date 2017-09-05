@@ -18,8 +18,10 @@ typedef struct hashTable {
   int size;
 } jHashTable;
 
-// Creates a new hash table with size slots.
+// Creates a new double potiner hash table with size slots.
 jHashTable **jHashTableNew(int capacity);
+// create new hash table
+jHashTable *jHashTableCreate(int capacity);
 // Table doubling when changed size.
 void jHashTableDoubling(jHashTable **hashTable);
 // Frees memory associated with given hash table.

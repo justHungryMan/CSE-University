@@ -1,17 +1,15 @@
 #include "test.h"
 
 void testAll() {
-  jHashTableNew(TABLE_INIT_SIZE);
-  testAdd(jHashTableNew(TABLE_INIT_SIZE));
-   testGet(jHashTableNew(TABLE_INIT_SIZE));
-   testRemove(jHashTableNew(TABLE_INIT_SIZE));
-   testDoubling(jHashTableNew(TABLE_INIT_SIZE));
+  // testAdd(jHashTableNew(TABLE_INIT_SIZE));
+  // testGet(jHashTableNew(TABLE_INIT_SIZE));
+  // testRemove(jHashTableNew(TABLE_INIT_SIZE));
+  testDoubling(jHashTableNew(TABLE_INIT_SIZE));
 }
 void testAdd(jHashTable **hashTable) {
   printf("Test Add....");
-  printf("%d\n", (*hashTable)->capacity);
   jHashTableAdd("Hyejin", "Girfriend", hashTable);
-  // jHashTableAdd("love", "Hyejin", hashTable);
+  jHashTableAdd("love", "Hyejin", hashTable);
   assert(jHashTableExists("Hyejin", hashTable) == true);
   assert(jHashTableExists("Sungjun", hashTable) == false);
   jHashTableDestroy(hashTable);
@@ -39,7 +37,7 @@ void testRemove(jHashTable **hashTable) {
 void testDoubling(jHashTable **hashTable) {
   printf("Test Doubling....");
 
-  jHashTableAdd("aa", "aa", hashTable);
+  jHashTableAdd("a", "a", hashTable);
   jHashTableAdd("b", "b", hashTable);
   jHashTableAdd("c", "c", hashTable);
   jHashTableAdd("d", "d", hashTable);
@@ -73,8 +71,8 @@ void testDoubling(jHashTable **hashTable) {
   jHashTableRemove("j", hashTable);
   jHashTableRemove("k", hashTable);
   jHashTableRemove("l", hashTable);
-  jHashTableRemove("m", hashTable);
-  jHashTableRemove("n", hashTable);
+  jHashTableRemove("p", hashTable);
+  jHashTableRemove("q", hashTable);
   jHashTableRemove("o", hashTable);
   assert((*hashTable)->capacity == 8);
   jHashTableDestroy(hashTable);
