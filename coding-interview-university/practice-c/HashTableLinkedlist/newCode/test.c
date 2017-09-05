@@ -3,9 +3,9 @@
 void testAll() {
   jHashTableNew(TABLE_INIT_SIZE);
   testAdd(jHashTableNew(TABLE_INIT_SIZE));
-  // testGet(jHashTableNew(TABLE_INIT_SIZE));
-  // testRemove(jHashTableNew(TABLE_INIT_SIZE));
-  // testDoubling(jHashTableNew(TABLE_INIT_SIZE));
+   testGet(jHashTableNew(TABLE_INIT_SIZE));
+   testRemove(jHashTableNew(TABLE_INIT_SIZE));
+   testDoubling(jHashTableNew(TABLE_INIT_SIZE));
 }
 void testAdd(jHashTable **hashTable) {
   printf("Test Add....");
