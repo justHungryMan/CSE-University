@@ -2,7 +2,7 @@
 
 // Creates a new hash table with size slots.
 jHashTable **jHashTableNew(int capacity) {
-  jHashTable **hashTablePointer = (jHashTable **)malloc(sizeof(jHashTable *));
+  jHashTable **hashTablePointer = (jHashTable**)malloc(sizeof(jHashTable*));
   *hashTablePointer = jHashTableCreate(capacity);
   return hashTablePointer;
 }
