@@ -7,4 +7,4 @@
 - Input Size
 - asymptotic behavior
 
-[참고자료1](#https://discrete.gr/complexity/)
+[참고자료1](https://discrete.gr/complexity/)
