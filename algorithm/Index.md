@@ -8,3 +8,4 @@
 2. [Analysis of Fibonacci](Analysis_of_Fibonacci.md)
 3. [Maximum Subsequence Sum](MSS.md)
 4. [Merge Sort](Merge_Sort.md)
+5. [Quick Sort](Quick-Sort.md)
